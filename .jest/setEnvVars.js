@@ -1,0 +1,5 @@
+process.env.DB_USER = 'test'
+process.env.DB_HOST = 'test'
+process.env.DB_NAME = 'test'
+process.env.DB_PASSWORD = 'test'
+process.env.DB_PORT = '5000'
