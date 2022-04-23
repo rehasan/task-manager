@@ -25,6 +25,10 @@ class TaskGroupRoute {
       .put(this.taskGroupValidator.validateBody(taskGroupSchema), this.taskGroupCtrl.updateTaskGroup);
     this.router.route('/:id')
       .delete(this.taskGroupCtrl.deleteTaskGroup);
+    this.router.route('/:id/tasks/:taskId')
+      .put(this.taskGroupCtrl.addToATaskGroup);
+    this.router.route('/:id/tasks/:taskId')
+      .delete(this.taskGroupCtrl.removeFromATaskGroup);
   }
 }
 

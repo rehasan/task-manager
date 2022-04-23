@@ -1,4 +1,4 @@
-import { Response } from 'express';
+import { Request, Response } from 'express';
 
 import { ApiRequest } from '../helpers/api-request';
 import { apiErrorHandler } from '../helpers/error-handler';
@@ -30,8 +30,8 @@ export default class TaskGroupController {
 
   getAllTasksById = async (req: ApiRequest<TaskGroup>, res: Response) => {
     try {
-      const task = await TaskGroupRepository.getAllTasksById(parseInt(req.params.id));
-      res.status(200).json(task);
+      const taskGroup = await TaskGroupRepository.getAllTasksById(parseInt(req.params.id));
+      res.status(200).json(taskGroup);
     } catch (error) {
       apiErrorHandler(
         error,
@@ -77,6 +77,38 @@ export default class TaskGroupController {
         req,
         res,
         `TaskGroup: deletion of ${req.params.id} failed.`
+      );
+    }
+  }
+
+  addToATaskGroup = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    const taskId = parseInt(req.params.taskId);
+    try {
+      await TaskGroupRepository.addATask(id, taskId);
+      res.status(204).json({});
+    } catch (error) {
+      apiErrorHandler(
+        error,
+        req,
+        res,
+        `TaskGroup: adding a task to a task group of ${req.params.id} failed.`
+      );
+    }
+  }
+
+  removeFromATaskGroup = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    const taskId = parseInt(req.params.taskId);
+    try {
+      await TaskGroupRepository.removeATask(id, taskId);
+      res.status(204).json({});
+    } catch (error) {
+      apiErrorHandler(
+        error,
+        req,
+        res,
+        `TaskGroup: removal a task from a task group of ${req.params.id} failed.`
       );
     }
   }

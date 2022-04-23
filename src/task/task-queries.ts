@@ -11,7 +11,9 @@ export class TaskQuery {
     pool.query('SELECT * FROM task_manager.task WHERE id = $1', [id]);
 
   findAllByTaskGroupId = (id: number): Promise<QueryResult> =>
-    pool.query('SELECT task.* FROM task_manager.task CROSS JOIN task_manager.task_group_task WHERE task_group_task.task_group_id = $1',
+    pool.query('SELECT task.* FROM task_manager.task ' +
+      'JOIN task_manager.task_group_task ON (task.id = task_group_task.task_id) ' +
+      'WHERE task_group_task.task_group_id = $1',
       [id]);
 
   create = (props: Task): Promise<QueryResult> =>

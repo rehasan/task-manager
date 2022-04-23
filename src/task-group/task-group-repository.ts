@@ -43,6 +43,14 @@ class TaskGroupRepository {
   delete = async (id: number) => {
     this.taskGroupQueries.destroy(id);
   }
+
+  addATask = async (id: number, taskId: number) => {
+    this.taskGroupQueries.addATask(id, taskId);
+  }
+
+  removeATask = async (id: number, taskId: number) => {
+    this.taskGroupQueries.removeATask(id, taskId);
+  }
 }
 
 export default new TaskGroupRepository();

@@ -11,7 +11,9 @@ export class TaskGroupQuery {
     pool.query('SELECT * FROM task_manager.task_group WHERE id = $1', [id]);
 
   findAllByTaskId = (id: number): Promise<QueryResult> =>
-    pool.query('SELECT task_group.* FROM task_manager.task_group CROSS JOIN task_manager.task_group_task WHERE task_group_task.task_id = $1',
+    pool.query('SELECT task_group.* FROM task_manager.task_group ' +
+      'JOIN task_manager.task_group_task ON (task_group.id = task_group_task.task_group_id) ' +
+      'WHERE task_group_task.task_id = $1',
       [id]);
 
   create = (props: TaskGroup): Promise<QueryResult> =>
@@ -23,5 +25,13 @@ export class TaskGroupQuery {
 
   destroy = (id: number) => {
     pool.query('DELETE FROM task_manager.task_group WHERE id = $1', [id]);
+  };
+
+  addATask = (id: number, taskId: number) => {
+    pool.query('INSERT INTO task_manager.task_group_task (task_group_id, task_id) VALUES ($1, $2)', [id, taskId]);
+  };
+
+  removeATask = (id: number, taskId: number) => {
+    pool.query('DELETE FROM task_manager.task_group_task WHERE task_group_id = $1 AND task_id = $2', [id, taskId]);
   };
 }
