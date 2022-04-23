@@ -70,3 +70,9 @@ The following table shows overview of the Rest APIs that will be exported,
 - POST    `api/tasks/`              create a task
 - PUT     `api/tasks/:id`           update a task
 - DELETE  `api/tasks/:id`           delete a task
+
+- GET     `api/task-groups`	        get all the task groups
+- GET     `api/task-groups/:id`     get a task group by id
+- POST    `api/task-groups/`        create a task group
+- PUT     `api/task-groups/:id`     update a task group
+- DELETE  `api/task-groups/:id`     delete a task group

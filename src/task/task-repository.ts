@@ -29,11 +29,11 @@ class TaskRepository {
   }
 
   update = async (id: number, props: Task) => {
-    await this.taskQueries.update(id, props);
+    this.taskQueries.update(id, props);
   }
 
   delete = async (id: number) => {
-    await this.taskQueries.destroy(id);
+    this.taskQueries.destroy(id);
   }
 }
 

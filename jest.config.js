@@ -3,7 +3,7 @@ module.exports = {
   verbose: true,
   preset: 'ts-jest',
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.{ts}'],
+  collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: './test-reports/test-coverage',
   coverageReporters: ['text-summary', 'text', 'cobertura', 'lcov'],
   reporters: [
