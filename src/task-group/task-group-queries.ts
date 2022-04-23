@@ -10,6 +10,10 @@ export class TaskGroupQuery {
   findByPk = (id: number): Promise<QueryResult> =>
     pool.query('SELECT * FROM task_manager.task_group WHERE id = $1', [id]);
 
+  findAllByTaskId = (id: number): Promise<QueryResult> =>
+    pool.query('SELECT task_group.* FROM task_manager.task_group CROSS JOIN task_manager.task_group_task WHERE task_group_task.task_id = $1',
+      [id]);
+
   create = (props: TaskGroup): Promise<QueryResult> =>
     pool.query('INSERT INTO task_manager.task_group (title) VALUES ($1) RETURNING *', [props.title]);
 

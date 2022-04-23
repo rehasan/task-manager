@@ -15,20 +15,6 @@ export default class TaskController {
     }
   }
 
-  getTaskByTaskGroup = async (req: ApiRequest<Task>, res: Response) => {
-    try {
-      const task = await TaskRepository.getByTaskGroupId(parseInt(req.params.id));
-      res.status(200).json(task);
-    } catch (error) {
-      apiErrorHandler(
-        error,
-        req,
-        res,
-        `Task: Get all by Task Group ${req.params.id} failed.`
-      );
-    }
-  }
-
   getTaskById = async (req: ApiRequest<Task>, res: Response) => {
     try {
       const result = await TaskRepository.getById(parseInt(req.params.id));
@@ -39,6 +25,20 @@ export default class TaskController {
       }
     } catch (error) {
       apiErrorHandler(error, req, res, `Task: ${req.params.id} failed.`);
+    }
+  }
+
+  getAllTaskGroupsById = async (req: ApiRequest<Task>, res: Response) => {
+    try {
+      const task = await TaskRepository.getAllTaskGroupsById(parseInt(req.params.id));
+      res.status(200).json(task);
+    } catch (error) {
+      apiErrorHandler(
+        error,
+        req,
+        res,
+        `Task: Get all by Task Group ${req.params.id} failed.`
+      );
     }
   }
 

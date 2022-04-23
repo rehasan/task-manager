@@ -15,10 +15,10 @@ class TaskRoute {
   intializeRoutes = () => {
     this.router.route('/')
       .get(this.taskCtrl.getAllTasks);
-    this.router.route('/task-group/:id')
-      .get(this.taskCtrl.getTaskByTaskGroup);
     this.router.route('/:id')
       .get(this.taskCtrl.getTaskById);
+    this.router.route('/:id/task-groups')
+      .get(this.taskCtrl.getAllTaskGroupsById);
     this.router.route('/')
       .post(this.taskValidator.validateBody(taskSchema), this.taskCtrl.createTask);
     this.router.route('/:id')

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import TaskGroupController from './task-controller';
+import TaskGroupController from './task-group-controller';
 import { TaskGroupValidator, taskGroupSchema } from './task-group-validator';
 
 class TaskGroupRoute {
@@ -17,6 +17,8 @@ class TaskGroupRoute {
       .get(this.taskGroupCtrl.getAllTaskGroups);
     this.router.route('/:id')
       .get(this.taskGroupCtrl.getTaskGroupById);
+    this.router.route('/:id/tasks')
+      .get(this.taskGroupCtrl.getAllTasksById);
     this.router.route('/')
       .post(this.taskGroupValidator.validateBody(taskGroupSchema), this.taskGroupCtrl.createTaskGroup);
     this.router.route('/:id')

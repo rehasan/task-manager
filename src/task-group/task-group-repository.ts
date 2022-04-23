@@ -1,11 +1,14 @@
+import { TaskQuery } from '../task/task-queries';
 import { TaskGroup } from './task-group';
 import { TaskGroupQuery } from './task-group-queries';
 
-class TaskRepository {
+class TaskGroupRepository {
   private taskGroupQueries;
+  private taskQueries;
 
   constructor() {
     this.taskGroupQueries = new TaskGroupQuery();
+    this.taskQueries = new TaskQuery();
   }
 
   getAll = async (): Promise<TaskGroup[]> => {
@@ -16,6 +19,16 @@ class TaskRepository {
   getById = async (id: number): Promise<TaskGroup | undefined> => {
     return (await this.taskGroupQueries.findByPk(id)).rows
       .map(taskGroup => ({ id: taskGroup.id, title: taskGroup.title, updatedAt: taskGroup.updated_at })).shift();
+  }
+
+  getAllTasksById = async (id: number): Promise<TaskGroup | undefined> => {
+    const taskGroup = await this.getById(id);
+    if (taskGroup) {
+      taskGroup.tasks = (await this.taskQueries.findAllByTaskGroupId(id)).rows
+        .map(task => ({ id: task.id, title: task.title, updatedAt: task.updated_at }));
+    }
+
+    return taskGroup;
   }
 
   create = async (props: TaskGroup): Promise<TaskGroup | undefined> => {
@@ -32,4 +45,4 @@ class TaskRepository {
   }
 }
 
-export default new TaskRepository();
+export default new TaskGroupRepository();

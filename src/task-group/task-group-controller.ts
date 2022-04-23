@@ -3,12 +3,12 @@ import { Response } from 'express';
 import { ApiRequest } from '../helpers/api-request';
 import { apiErrorHandler } from '../helpers/error-handler';
 import { TaskGroup } from './task-group';
-import TaskRepository from './task-group-repository';
+import TaskGroupRepository from './task-group-repository';
 
 export default class TaskGroupController {
   getAllTaskGroups = async (req: ApiRequest<TaskGroup>, res: Response) => {
     try {
-      const tasks = await TaskRepository.getAll();
+      const tasks = await TaskGroupRepository.getAll();
       res.json(tasks);
     } catch (error) {
       apiErrorHandler(error, req, res, 'TaskGroup: Get all failed.');
@@ -17,7 +17,7 @@ export default class TaskGroupController {
 
   getTaskGroupById = async (req: ApiRequest<TaskGroup>, res: Response) => {
     try {
-      const result = await TaskRepository.getById(parseInt(req.params.id));
+      const result = await TaskGroupRepository.getById(parseInt(req.params.id));
       if (result) {
         return res.json(result);
       } else {
@@ -28,9 +28,23 @@ export default class TaskGroupController {
     }
   }
 
+  getAllTasksById = async (req: ApiRequest<TaskGroup>, res: Response) => {
+    try {
+      const task = await TaskGroupRepository.getAllTasksById(parseInt(req.params.id));
+      res.status(200).json(task);
+    } catch (error) {
+      apiErrorHandler(
+        error,
+        req,
+        res,
+        `Task: Get all by Task Group ${req.params.id} failed.`
+      );
+    }
+  }
+
   createTaskGroup = async (req: ApiRequest<TaskGroup>, res: Response) => {
     try {
-      const result = await TaskRepository.create(req.body);
+      const result = await TaskGroupRepository.create(req.body);
       res.status(201).json(result);
     } catch (error) {
       apiErrorHandler(error, req, res, 'TaskGroup: creation failed.');
@@ -40,7 +54,7 @@ export default class TaskGroupController {
   updateTaskGroup = async (req: ApiRequest<TaskGroup>, res: Response) => {
     const id = parseInt(req.params.id);
     try {
-      await TaskRepository.update(id, req.body);
+      await TaskGroupRepository.update(id, req.body);
       res.status(204).json({});
     } catch (error) {
       apiErrorHandler(
@@ -55,7 +69,7 @@ export default class TaskGroupController {
   deleteTaskGroup = async (req: ApiRequest<TaskGroup>, res: Response) => {
     const id = parseInt(req.params.id);
     try {
-      await TaskRepository.delete(id);
+      await TaskGroupRepository.delete(id);
       res.status(204).json({});
     } catch (error) {
       apiErrorHandler(
