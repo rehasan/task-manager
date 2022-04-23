@@ -37,7 +37,7 @@ export default class TaskController {
         error,
         req,
         res,
-        `Task: Get all by Task Group ${req.params.id} failed.`
+        `Task: Get all task groups by Task ${req.params.id} failed.`
       );
     }
   }
