@@ -1,18 +1,11 @@
 # task-manager
 
 Develop a feature for users to create tasks and task lists. Tasks can then be added to different task lists.
-2. Develop a Rest API with CRUD endpoints for tasks and task lists as well as endpoints to add/remove a task to/from a task list.
-
-Requirements:
-- The same task can be added to multiple task lists.
-
-Bonus:
-- API implemented as Lambda functions using Serverless framework.
 
 ## PRE-REQUISITES
 
 - Requires NodeJs `14.16.0` or higher
-- Requires docker-compose https://docs.docker.com/compose/install/
+- Requires docker compose https://docs.docker.com/compose/install/
 
 ## Clone the repository
 
@@ -48,7 +41,9 @@ Postgres and API services will be building and executing with the following comm
 
 ## API Outlines
 
-The following table shows overview of the Rest APIs that will be exported,
+Now, you should be able to explore the API locally from http://localhost:3000.
+
+The following table shows overview of the Rest APIs that will be accessible,
 
 - GET     `api/tasks`	                        get all the tasks
 - GET     `api/tasks/:id`                       get a task by id
@@ -67,4 +62,4 @@ The following table shows overview of the Rest APIs that will be exported,
 - PUT     `api/task-groups/:id/tasks/:taskId`   add a task to a task group
 - DELETE  `api/task-groups/:id/tasks/:taskId`   remove a task from a task group
 
-Additionally, import [postman collect with it's env](./.postman) to explore the API endpoints.
+Additionally, import [postman collection with it's env](./.postman) to explore the API endpoints. Please remeber to select `task-manager.postman_collection.json` env variable while executing the API endpoints file from Postman.
