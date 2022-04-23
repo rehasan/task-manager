@@ -1,28 +1,13 @@
 # task-manager
 
-We need to develop a feature for users to create tasks and task lists. Tasks can then be added to different task lists.
-1. Design a db schema for the relevant entities.
+Develop a feature for users to create tasks and task lists. Tasks can then be added to different task lists.
 2. Develop a Rest API with CRUD endpoints for tasks and task lists as well as endpoints to add/remove a task to/from a task list.
 
 Requirements:
-- Use Postgres or MySQL.
-- For simplicity, a file with DDL scripts is enough to create the db schema.
-- Tasks and task lists must have at least “title” and “updatedAt” columns.
 - The same task can be added to multiple task lists.
-- Implement the app with TypeScript.
-- Write tests for at least 2 endpoints using Jest or Mocha.
-- Add instructions to run the application.
 
 Bonus:
-- Docker config to start up DB.
-- Preferably do not use any ORM framework.
 - API implemented as Lambda functions using Serverless framework.
-
-Notes:
-- Keep it simple.
-- Do not spend more than 2/3 hours.
-- This task should give us a sense of your coding style and an insight into how you would structure a Nodejs app.
-- Submit your code in a public git repository (preferred) or in a zip file via email.
 
 ## PRE-REQUISITES
 
