@@ -45,21 +45,21 @@ Now, you should be able to explore the API locally from http://localhost:3000.
 
 The following table shows overview of the Rest APIs that will be accessible,
 
-- GET     `api/tasks`	                        get all the tasks
-- GET     `api/tasks/:id`                       get a task by id
-- GET     `api/tasks/:id/task-groups`	        get all the task groups by task
-- POST    `api/tasks/`                          create a task
-- PUT     `api/tasks/:id`                       update a task
-- DELETE  `api/tasks/:id`                       delete a task
-
-- GET     `api/task-groups`	                    get all the task groups
-- GET     `api/task-groups/:id`                 get a task group by id
-- GET     `api/task-groups/:id/tasks`	        get all the tasks by task group
-- POST    `api/task-groups/`                    create a task group
-- PUT     `api/task-groups/:id`                 update a task group
-- DELETE  `api/task-groups/:id`                 delete a task group
-
-- PUT     `api/task-groups/:id/tasks/:taskId`   add a task to a task group
-- DELETE  `api/task-groups/:id/tasks/:taskId`   remove a task from a task group
+| Method    | End Point                           | Note
+| --------- | ----------------------------------- | ----------------------------------- |      
+| `GET`     | `api/tasks`	                      | get all the tasks                   |
+| `GET`     | `api/tasks/:id`                     | get a task by id                    |
+| `GET`     | `api/tasks/:id/task-groups`	      | get all the task groups by task     |
+| `POST`    | `api/tasks/`                        | create a task                       |
+| `PUT`     | `api/tasks/:id`                     | update a task                       |
+| `DELETE`  | `api/tasks/:id`                     | delete a task                       |
+| `GET`     | `api/task-groups`	                  | get all the task groups             |
+| `GET`     | `api/task-groups/:id`               | get a task group by id              |
+| `GET`     | `api/task-groups/:id/tasks`	      | get all the tasks by task group     |
+| `POST`    | `api/task-groups/`                  | create a task group                 |
+| `PUT`     | `api/task-groups/:id`               | update a task group                 |
+| `DELETE`  | `api/task-groups/:id`               | delete a task group                 |
+| `PUT`     | `api/task-groups/:id/tasks/:taskId` | add a task to a task group          |
+| `DELETE`  | `api/task-groups/:id/tasks/:taskId` | remove a task from a task group     |
 
 Additionally, import [postman collection with it's env](./.postman) to explore the API endpoints. Please remeber to select `task-manager.postman_collection.json` env variable while executing the API endpoints file from Postman.
