@@ -62,4 +62,4 @@ The following table shows overview of the Rest APIs that will be accessible,
 | `PUT`     | `api/task-groups/:id/tasks/:taskId` | add a task to a task group          |
 | `DELETE`  | `api/task-groups/:id/tasks/:taskId` | remove a task from a task group     |
 
-Additionally, import [postman collection with it's env](./.postman) to explore the API endpoints. Please remeber to select `task-manager.postman_collection.json` env variable while executing the API endpoints file from Postman.
+Additionally, import [postman collection with it's env](./.postman) to explore the API endpoints. Please remember to select `task-manager.postman_collection.json` env variable while executing the API endpoints file from Postman.
